@@ -16,6 +16,7 @@
 ### Metoder som kan behövas: (Kan komma att ändras) 
 - Betting Metod 
 - Shuffle Metod 
+- Draw Metod
 - Spelarval Metod (Hit, Pass, Stand, etc) 
 - Uppdatera Saldo Metod (Kopplad till databas) 
 - Varning Metod för saldo (Om man exempelvis har för lågt saldo) 
