@@ -1,25 +1,24 @@
 # Indelning
 
-
 ## Klasser: 
-### Card: 
+**Card** 
 Amir 
-### Deck: 
+**Deck:** 
 Aihem 
-### Player 
+**Player** 
 (Spelare, Dealer): Jesper 
-### Game 
+**Game**
 (Main, Loop, Regler): Emil 
  
-### Databas: 
+**Databas** 
 Saldo, Username, Password: Sonny 
  
-Metoder som kan behövas: (Kan komma att ändras) 
-Betting Metod 
-Shuffle Metod 
-Spelarval Metod (Hit, Pass, Stand, etc) 
-Uppdatera Saldo Metod (Kopplad till databas) 
-Varning Metod för saldo (Om man exempelvis har för lågt saldo) 
+### Metoder som kan behövas: (Kan komma att ändras) 
+- Betting Metod 
+- Shuffle Metod 
+- Spelarval Metod (Hit, Pass, Stand, etc) 
+- Uppdatera Saldo Metod (Kopplad till databas) 
+- Varning Metod för saldo (Om man exempelvis har för lågt saldo) 
  
  
  
