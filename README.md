@@ -1,7 +1,7 @@
 #Indelning
 
 
-Klasser: 
+##Klasser: 
 Card: Amir 
 Deck: Aihem 
 Player (Spelare, Dealer): Jesper 
