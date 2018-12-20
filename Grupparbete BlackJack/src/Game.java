@@ -6,12 +6,13 @@ public class Game {
 	boolean loggedIn = false;
 	Scanner scanner = new Scanner(System.in);
 	int money, bet;
-	//Card card = new Card();
-	//Database database = new Database();
-	//Player dealer = new Player();
-	//Player player = new Player();
-	//Deck deck = new deck();
-	
+	// Card card = new Card();
+	// Database database = new Database();
+	// Player dealer = new Player();
+	// Player player = new Player();
+	Deck deck = new Deck();
+	deck.createDeck();
+	System.out.println(deck.toString());
 
 	System.out.println("Welcome to BlackJack");
 	System.out.println("Press 1 to Login");
@@ -35,20 +36,18 @@ public class Game {
 	    break;
 
 	}
-	
-	while(loggedIn) {
-	    //deck.shuffle()
-	    //player.draw(2)
-	    //dealer.draw(2)
-	    //syso "dealer has card : + card1.value"
-	    //syso "press 1 to hit, 2 to stand"
-	    
+
+	while (loggedIn) {
+	    // deck.shuffle()
+	    // player.draw(2)
+	    // dealer.draw(2)
+	    // syso "dealer has card : + card1.value"
+	    // syso "press 1 to hit, 2 to stand"
+
 	}
-	
+
 	scanner.close();
 
     }
-    
-
 
 }
