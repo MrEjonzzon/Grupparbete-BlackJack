@@ -1,13 +1,17 @@
-#Indelning
+# Indelning
 
 
-##Klasser: 
-Card: Amir 
-Deck: Aihem 
-Player (Spelare, Dealer): Jesper 
-Game (Main, Loop, Regler): Emil 
+## Klasser: 
+### Card: 
+Amir 
+### Deck: 
+Aihem 
+### Player 
+(Spelare, Dealer): Jesper 
+### Game 
+(Main, Loop, Regler): Emil 
  
-Databas: 
+### Databas: 
 Saldo, Username, Password: Sonny 
  
 Metoder som kan behövas: (Kan komma att ändras) 
