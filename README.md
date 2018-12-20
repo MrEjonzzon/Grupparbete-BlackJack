@@ -1,17 +1,17 @@
 # Indelning
 
 ## Klasser: 
-**Card** 
-Amir 
-**Deck:** 
-Aihem 
-**Player** 
-(Spelare, Dealer): Jesper 
-**Game**
-(Main, Loop, Regler): Emil 
+- **Card** 
+> Amir 
+- **Deck** 
+> Aihem 
+- **Player** 
+> (Spelare, Dealer): Jesper 
+- **Game**
+> (Main, Loop, Regler): Emil 
  
-**Databas** 
-Saldo, Username, Password: Sonny 
+- **Databas** 
+> Saldo, Username, Password: Sonny 
  
 ### Metoder som kan behövas: (Kan komma att ändras) 
 - Betting Metod 
