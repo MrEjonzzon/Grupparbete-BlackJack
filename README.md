@@ -19,6 +19,8 @@
 - Spelarval Metod (Hit, Pass, Stand, etc) 
 - Uppdatera Saldo Metod (Kopplad till databas) 
 - Varning Metod för saldo (Om man exempelvis har för lågt saldo) 
+- Bust Result metod
+
  
  
  
