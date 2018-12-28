@@ -12,33 +12,46 @@ public class Game {
 		// Player player = new Player();
 		Deck deck = new Deck();
 		deck.createDeck();
-		System.out.println(deck.toString());
+		//System.out.println(deck.toString());
 
 		System.out.println("Welcome to BlackJack");
-		System.out.println("Press 1 to Login");
-		System.out.println("Press 2 to Register");
-		int selection = scanner.nextInt();
-		switch (selection) {
-		case 1:
-			System.out.print("Enter username: ");
-			String userName = scanner.next();
-			System.out.print("Enter password: ");
-			String password = scanner.next();
-			database.login(userName, password);
+		System.out.println("[1] Login");
+		System.out.println("[2] Register");
+		System.out.print("Enter: ");
+		
+		String selection = scanner.next();
+		try 
+		{
+			int select = Integer.parseInt(selection);
+			switch (select) {
+			case 1:
+				System.out.print("Enter username: ");
+				String loggInName = scanner.next();
+				System.out.print("Enter password: ");
+				String loggInpassword = scanner.next();
+				database.login(loggInName, loggInpassword);
+				loggedIn = true;
+				break;
+				
+			case 2:
+				System.out.print("Enter username: ");
+				String registerName = scanner.next();
+				System.out.print("Enter password: ");
+				String registerPassword = scanner.next();
+				database.register(registerName, registerPassword);
+				break;
+				
+			default:
+				System.out.println("Invalid selection, try again");
+				break;
 
-			loggedIn = true;
-			// else
-			// syso "wrong username";
-			break;
-		case 2:
-			// Database.register() or something
-			System.out.println("You have been registered");
-			break;
-		default:
-			System.out.println("Invalid selection, try again");
-			break;
-
+			}
 		}
+		catch(NumberFormatException e)
+		{
+			System.out.println("Something went wrong! \nPlease enter numbers between 1-2");
+		}
+
 
 		while (loggedIn) {
 			// deck.shuffle()

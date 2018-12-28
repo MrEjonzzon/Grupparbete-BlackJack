@@ -35,14 +35,40 @@ public class Database {
 	
 	public void register(String userName, String password) 
 	{
+		boolean notValid = true;
 		int defaultC = 500; // The value the user will get for creating an account to the database. 
 		try 
 		{
-			pStatement = conn.prepareStatement("insert into users value(default, ?, ?, ?)");
-			pStatement.setString(1, userName);
-			pStatement.setString(2, password);
-			pStatement.setInt(3, defaultC);
-			System.out.println("Account with username " + userName + " has succesfully been created. Current amount is " + defaultC);
+			statement = conn.createStatement();
+			result = statement.executeQuery("select * from users");
+			
+			while(result.next()) 
+			{
+				if (result.getString("userName").equals(userName)) 
+				{
+					notValid = true;
+					break;
+				}
+				else 
+				{
+					notValid = false;
+				}
+			}
+			
+			if (notValid = false) 
+			{
+				pStatement = conn.prepareStatement("insert into users value(default, ?, ?, ?)");
+				pStatement.setString(1, userName);
+				pStatement.setString(2, password);
+				pStatement.setInt(3, defaultC);
+				System.out.println("Account with username " + userName + " has succesfully been created. Current amount is " + defaultC);
+			}
+			else 
+			{
+				System.out.println("(Username already taken, try again!)");
+			}
+			
+			
 		} 
 		catch (SQLException e) 
 		{
