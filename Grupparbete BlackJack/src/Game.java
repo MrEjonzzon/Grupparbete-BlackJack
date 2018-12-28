@@ -23,6 +23,7 @@ public class Game {
 		try 
 		{
 			int select = Integer.parseInt(selection);
+			
 			switch (select) {
 			case 1:
 				System.out.print("Enter username: ");
