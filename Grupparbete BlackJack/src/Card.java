@@ -1,28 +1,37 @@
+public class Card{
+	private String suit;
+	private String label;
+	private int rank;
+	
+	public Card (String suit, String label, int rank ) {
+		this.suit = suit;
+		this.label = label;
+		this.rank = rank;
+	}
+	
+	public String getsuit() {
+		return suit;
+	}
+	public void setSuit(String suit) {
+		this.suit = suit;
+	}
+	public String getlabel() {
+		return label;
+	}
+	public void setLabel(String label) {
+		this.label = label;
+	}
+	public int getRank() {
+		return rank;
+	}
+	public void setRank(int rank) {
+		this.rank = rank;
+	}
 
-public class Card {
-
-    private String rank, suit;
-
-    public Card(String rank, String suit) {
-	this.rank = rank;
-	this.suit = suit;
-
-    }
-
-    public String getSuit() {
-	return suit;
-    }
-
-    public String getRank() {
-	return rank;
-    }
-
-    public String toString() {
-	getRank();
-	getSuit();
-	String cardString = getRank() + " of " + getSuit() + " ";
-	return cardString;
-
-    }
-
+	@Override
+	public String toString() {
+		return "Card [suit=" + suit + ", label=" + label + ", rank=" + rank + "]";
+	}
+	
+	
 }
