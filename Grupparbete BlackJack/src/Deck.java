@@ -9,8 +9,8 @@ public class Deck {
 	int currentCard = 0;
 	for (int i = 0; i < ranks.length; i++) {
 	    for (int j = 0; j < suits.length; j++) {
-		Card card = new Card(ranks[i], suits[j]);
-		deck[currentCard] = card;
+		//Card card = new Card(ranks[i], suits[j]);
+		//deck[currentCard] = card;
 		currentCard++;
 	    }
 	}
