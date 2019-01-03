@@ -1,7 +1,6 @@
 package se.nackademin.blackjack.model;
 
 import java.util.List;
-
 import se.nackademin.blackjack.model.Card;
 import se.nackademin.blackjack.service.Dealer;
 

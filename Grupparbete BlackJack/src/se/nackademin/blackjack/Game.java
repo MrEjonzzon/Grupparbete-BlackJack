@@ -2,7 +2,6 @@ package se.nackademin.blackjack;
 
 import java.util.List;
 import java.util.Scanner;
-
 import se.nackademin.blackjack.db.Database;
 import se.nackademin.blackjack.model.Card;
 import se.nackademin.blackjack.model.Deck;
@@ -28,34 +27,30 @@ public class Game {
 
 	String selection = scanner.next();
 	try {
-	    int select = Integer.parseInt(selection);
+		int select = Integer.parseInt(selection);
 
-	    switch (select) {
-	    case 1:
-		System.out.print("Enter username: ");
-		String loggInName = scanner.next();
-		System.out.print("Enter password: ");
-		String loggInpassword = scanner.next();
-		database.login(loggInName, loggInpassword);
-		loggedIn = true;
-		break;
+		switch (select) {
+		case 1:
+			
+			database.login();
+			loggedIn = true;
+			break;
 
-	    case 2:
-		System.out.print("Enter username: ");
-		String registerName = scanner.next();
-		System.out.print("Enter password: ");
-		String registerPassword = scanner.next();
-		database.register(registerName, registerPassword);
-		break;
+		case 2:
+			database.register();
+			database.login();
+			break;
 
-	    default:
-		System.out.println("Invalid selection, try again");
-		break;
+		default:
+			System.out.println("Invalid selection, try again");
+			break;
 
-	    }
+		}
 	} catch (NumberFormatException e) {
-	    System.out.println("Something went wrong! \nPlease enter numbers between 1-2");
+		System.out.println("Something went wrong! \nPlease enter numbers between 1-2");
 	}
+
+
 
 	while (loggedIn) {
 	    while (gameOn) {

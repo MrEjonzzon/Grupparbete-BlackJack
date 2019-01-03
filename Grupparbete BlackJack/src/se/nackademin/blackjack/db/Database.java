@@ -15,7 +15,16 @@ public class Database {
 	private Statement statement = null;
 	private PreparedStatement pStatement = null;
 	private ResultSet result = null;
+	private int balance;
 
+
+	public int getBalance() {
+		return balance;
+	}
+
+	public void setBalance(int balance) {
+		this.balance = balance;
+	}
 
 	public Database()
 	{
