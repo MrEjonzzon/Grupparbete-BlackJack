@@ -1,3 +1,4 @@
+package se.nackademin.blackjack.db;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -12,7 +13,7 @@ public class Database {
 	private PreparedStatement pStatement = null;
 	private ResultSet result = null;
 	
-	Database()
+	public Database()
 	{
 		try 
 		{

@@ -1,37 +1,36 @@
+package se.nackademin.blackjack.model;
 public class Card{
 	private String suit;
-	private String label;
-	private int rank;
+	private String rank;
+	private int value;
 	
-	public Card (String suit, String label, int rank ) {
-		this.suit = suit;
-		this.label = label;
+	public Card (String rank, String suit, int value ) {
 		this.rank = rank;
+		this.suit = suit;
+		this.value = value;
 	}
 	
-	public String getsuit() {
+	public String getRank() {
+		return rank;
+	}
+	public void setRank(String rank) {
+		this.rank = rank;
+	}
+	public String getSuit() {
 		return suit;
 	}
 	public void setSuit(String suit) {
 		this.suit = suit;
 	}
-	public String getlabel() {
-		return label;
+	public int getValue() {
+		return value;
 	}
-	public void setLabel(String label) {
-		this.label = label;
-	}
-	public int getRank() {
-		return rank;
-	}
-	public void setRank(int rank) {
-		this.rank = rank;
+	public void setValue(int value) {
+		this.value = value;
 	}
 
 	@Override
 	public String toString() {
-		return "Card [suit=" + suit + ", label=" + label + ", rank=" + rank + "]";
+		return "Card [rank=" + rank + ", suit=" + suit + ", value=" + value + "]";
 	}
-	
-	
 }

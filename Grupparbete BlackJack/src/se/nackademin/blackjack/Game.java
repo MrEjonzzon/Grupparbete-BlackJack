@@ -1,8 +1,19 @@
+package se.nackademin.blackjack;
+import java.util.List;
 import java.util.Scanner;
+
+import se.nackademin.blackjack.db.Database;
+import se.nackademin.blackjack.model.Card;
+import se.nackademin.blackjack.model.Deck;
+import se.nackademin.blackjack.service.Dealer;
 
 public class Game {
 
 	public static void main(String[] args) {
+		Dealer dealer = new Dealer();
+		List<Card> cards = dealer.createNewDeck();
+		System.out.println(cards);
+		System.out.println(dealer.shuffle(cards));
 		boolean loggedIn = false;
 		Scanner scanner = new Scanner(System.in);
 		int money, bet;
@@ -10,8 +21,7 @@ public class Game {
 		Database database = new Database();
 		// Player dealer = new Player();
 		// Player player = new Player();
-		Deck deck = new Deck();
-		deck.createDeck();
+
 		//System.out.println(deck.toString());
 
 		System.out.println("Welcome to BlackJack");
