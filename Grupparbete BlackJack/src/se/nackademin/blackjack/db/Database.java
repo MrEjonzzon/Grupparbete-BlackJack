@@ -5,14 +5,18 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Scanner;
 
 public class Database {
+	
+	Scanner input = new Scanner(System.in);
 	
 	private Connection conn = null;
 	private Statement statement = null;
 	private PreparedStatement pStatement = null;
 	private ResultSet result = null;
-	
+
+
 	public Database()
 	{
 		try 
@@ -34,8 +38,12 @@ public class Database {
 		}
 	}
 	
-	public void register(String userName, String password) 
+	public void register() 
 	{
+		System.out.print("Enter username: ");
+		String userName = input.next();
+		System.out.print("Enter password: ");
+		String password = input.next();
 		boolean notValid = true;
 		int defaultC = 500; // The value the user will get for creating an account to the database. 
 		try 
@@ -56,17 +64,20 @@ public class Database {
 				}
 			}
 			
-			if (notValid = false) 
+			if (notValid == false) 
 			{
 				pStatement = conn.prepareStatement("insert into users value(default, ?, ?, ?)");
 				pStatement.setString(1, userName);
 				pStatement.setString(2, password);
 				pStatement.setInt(3, defaultC);
+				pStatement.executeUpdate();
 				System.out.println("Account with username " + userName + " has succesfully been created. Current amount is " + defaultC);
 			}
 			else 
 			{
 				System.out.println("(Username already taken, try again!)");
+				register();
+			
 			}
 			
 			
@@ -77,8 +88,13 @@ public class Database {
 		}
 	}
 	
-	public void login(String userName, String password) 
+	public void login() 
 	{
+		System.out.print("Enter username: ");
+		String userName = input.next();
+		System.out.print("Enter password: ");
+		String password = input.next();
+		
 		boolean valid = true;
 		int currency = 0;
 		
@@ -122,6 +138,6 @@ public class Database {
 			e.printStackTrace();
 		}
 		
-		
 	}
+	
 }
