@@ -14,6 +14,7 @@ public class Game {
 	boolean loggedIn = false;
 	boolean gameOn = true;
 	Scanner scanner = new Scanner(System.in);
+
 	Database database = new Database();
 	Deck deck = new Deck();
 

@@ -45,7 +45,6 @@ public class Player {
 	// deck.draw
 	// add to player.hand
 	// handValue += newcard
-
     }
 
     void bust(int betAmount) {
