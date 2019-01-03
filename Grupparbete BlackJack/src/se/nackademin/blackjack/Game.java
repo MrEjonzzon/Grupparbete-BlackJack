@@ -26,6 +26,7 @@ public class Game {
 	System.out.print("Enter: ");
 
 	String selection = scanner.next();
+	
 	try {
 		int select = Integer.parseInt(selection);
 
