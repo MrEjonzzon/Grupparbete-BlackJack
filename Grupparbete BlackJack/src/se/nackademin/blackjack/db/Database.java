@@ -11,11 +11,21 @@ public class Database {
 	
 	Scanner input = new Scanner(System.in);
 	
+	boolean goToGame;
+	private String userName;
+	private int balance;
 	private Connection conn = null;
 	private Statement statement = null;
 	private PreparedStatement pStatement = null;
 	private ResultSet result = null;
-	private int balance;
+	
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
 
 
 	public int getBalance() {
@@ -51,6 +61,7 @@ public class Database {
 	{
 		System.out.print("Enter username: ");
 		String userName = input.next();
+		setUserName(userName);
 		System.out.print("Enter password: ");
 		String password = input.next();
 		boolean notValid = true;
@@ -80,16 +91,15 @@ public class Database {
 				pStatement.setString(2, password);
 				pStatement.setInt(3, defaultC);
 				pStatement.executeUpdate();
-				System.out.println("Account with username " + userName + " has succesfully been created. Current amount is " + defaultC);
+				System.out.println("Account with username " + getUserName() + " has succesfully been created. Current amount is " + defaultC);
+				setGoToGame(true);
 			}
 			else 
 			{
 				System.out.println("(Username already taken, try again!)");
 				register();
-			
 			}
-			
-			
+
 		} 
 		catch (SQLException e) 
 		{
@@ -119,7 +129,7 @@ public class Database {
 					if(result.getString("pwd").equals(password)) 
 					{
 						valid = true;
-						currency = result.getInt("currency");
+						setBalance(result.getInt("currency"));
 						break;
 					}
 					else 
@@ -135,11 +145,13 @@ public class Database {
 			
 			if(valid) 
 			{
-				System.out.println("Succefully logged in as " + userName + "\nYour currency is " + currency);
+				System.out.println("Succefully logged in as " + userName + "\nYour currency is " + getBalance());
+				setGoToGame(true);
 			}
 			else 
 			{
 				System.out.println("Username or password is wrong! Try again");
+				login();
 			}
 		} 
 		catch (SQLException e) 
@@ -147,6 +159,14 @@ public class Database {
 			e.printStackTrace();
 		}
 		
+	}
+
+	public boolean isGoToGame() {
+		return goToGame;
+	}
+
+	public void setGoToGame(boolean goToGame) {
+		this.goToGame = goToGame;
 	}
 	
 }
