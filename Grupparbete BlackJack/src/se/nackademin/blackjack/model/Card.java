@@ -1,9 +1,10 @@
 package se.nackademin.blackjack.model;
 public class Card{
-	private String suit;
 	private String rank;
+	private String suit;
 	private int value;
 	
+	//Constructor of Card class
 	public Card (String rank, String suit, int value ) {
 		this.rank = rank;
 		this.suit = suit;
@@ -31,6 +32,9 @@ public class Card{
 
 	@Override
 	public String toString() {
-		return rank + " of "+ suit;
+		return rank + "of  "+ suit + ",   Value = "+ value +"\n";
 	}
 }
+
+
+    

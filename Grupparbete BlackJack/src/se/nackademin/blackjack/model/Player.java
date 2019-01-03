@@ -35,7 +35,7 @@ public class Player {
         this.handValue = handValue;
     }
 
-    public void drawCard(int cardAmount) {
+   // public void drawCard(int cardAmount) {
 	//deck.draw
 	//add to player.hand
 	//handValue += newcard
@@ -43,7 +43,7 @@ public class Player {
 
     }
 
-    public int bet(int betAmount) {
-	int pot;
-	pot += betAmount;
-    }
+   // public int bet(int betAmount) {
+	//int pot;
+	//pot += betAmount;
+    //}

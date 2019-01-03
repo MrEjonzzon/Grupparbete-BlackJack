@@ -34,7 +34,7 @@ public class Database {
 		
 		try 
 		{
-			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/blackjack?" + "user=AdminBlackJack&password=BlackJack18");
+			conn = DriverManager.getConnection("jdbc:mysql://172.20.200.182:3306/blackjack?" + "user=AdminBlackJack&password=BlackJack18");
 		}
 		catch (SQLException e) 
 		{
