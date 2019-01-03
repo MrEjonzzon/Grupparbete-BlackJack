@@ -1,4 +1,5 @@
 package se.nackademin.blackjack.db;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -14,28 +15,12 @@ public class Database {
 	boolean goToGame;
 	private String userName;
 	private int balance;
+	
 	private Connection conn = null;
 	private Statement statement = null;
 	private PreparedStatement pStatement = null;
 	private ResultSet result = null;
 	
-	public String getUserName() {
-		return userName;
-	}
-
-	public void setUserName(String userName) {
-		this.userName = userName;
-	}
-
-
-	public int getBalance() {
-		return balance;
-	}
-
-	public void setBalance(int balance) {
-		this.balance = balance;
-	}
-
 	public Database()
 	{
 		try 
@@ -59,6 +44,7 @@ public class Database {
 	
 	public void register() 
 	{
+		System.out.println("\n--------REGISTER--------\n");
 		System.out.print("Enter username: ");
 		String userName = input.next();
 		setUserName(userName);
@@ -92,7 +78,7 @@ public class Database {
 				pStatement.setInt(3, defaultC);
 				pStatement.executeUpdate();
 				System.out.println("Account with username " + getUserName() + " has succesfully been created. Current amount is " + defaultC);
-				setGoToGame(true);
+				login();
 			}
 			else 
 			{
@@ -109,13 +95,13 @@ public class Database {
 	
 	public void login() 
 	{
+		System.out.println("\n--------LOGIN-----------\n");
 		System.out.print("Enter username: ");
 		String userName = input.next();
 		System.out.print("Enter password: ");
 		String password = input.next();
 		
 		boolean valid = true;
-		int currency = 0;
 		
 		try {
 			
@@ -167,6 +153,23 @@ public class Database {
 
 	public void setGoToGame(boolean goToGame) {
 		this.goToGame = goToGame;
+	}
+	
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
+
+	public int getBalance() {
+		return balance;
+	}
+
+	public void setBalance(int balance) {
+		this.balance = balance;
 	}
 	
 }
