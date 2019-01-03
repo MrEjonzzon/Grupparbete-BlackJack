@@ -31,6 +31,6 @@ public class Card{
 
 	@Override
 	public String toString() {
-		return "Card [rank=" + rank + ", suit=" + suit + ", value=" + value + "]";
+		return rank + " of "+ suit;
 	}
 }
