@@ -26,30 +26,35 @@ public class Game {
 	System.out.print("Enter: ");
 
 	String selection = scanner.next();
+
 	
-	try {
-		int select = Integer.parseInt(selection);
+		try {
+			int select = Integer.parseInt(selection);
 
-		switch (select) {
-		case 1:
-			
-			database.login();
-			loggedIn = true;
-			break;
+			switch (select) {
+			case 1:
+				database.login();
+				loggedIn = true;
+				break;
 
-		case 2:
-			database.register();
-			database.login();
-			break;
+			case 2:
+				database.register();
+				if (database.isGoToGame() == true) 
+				{
+					loggedIn = true;
+				}
+				break;
 
-		default:
-			System.out.println("Invalid selection, try again");
-			break;
+			default:
+				System.out.println("Invalid selection, try again");
+				break;
 
+			}
+		} catch (NumberFormatException e) {
+			System.out.println("Something went wrong! \nPlease enter numbers between 1-2");
 		}
-	} catch (NumberFormatException e) {
-		System.out.println("Something went wrong! \nPlease enter numbers between 1-2");
-	}
+	
+
 
 
 
