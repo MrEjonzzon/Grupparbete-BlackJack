@@ -44,14 +44,16 @@ public class Database {
 	
 	public void register() 
 	{
+		boolean notValid = true;
+		int defaultC = 500; // The value the user will get for creating an account to the database. 
+		
 		System.out.println("\n--------REGISTER--------\n");
 		System.out.print("Enter username: ");
 		String userName = input.next();
 		setUserName(userName);
 		System.out.print("Enter password: ");
 		String password = input.next();
-		boolean notValid = true;
-		int defaultC = 500; // The value the user will get for creating an account to the database. 
+		
 		try 
 		{
 			statement = conn.createStatement();
@@ -98,6 +100,7 @@ public class Database {
 		System.out.println("\n--------LOGIN-----------\n");
 		System.out.print("Enter username: ");
 		String userName = input.next();
+		setUserName(userName);
 		System.out.print("Enter password: ");
 		String password = input.next();
 		
@@ -131,7 +134,6 @@ public class Database {
 			
 			if(valid) 
 			{
-				System.out.println("Succefully logged in as " + userName + "\nYour currency is " + getBalance());
 				setGoToGame(true);
 			}
 			else 
@@ -146,7 +148,21 @@ public class Database {
 		}
 		
 	}
+	
+	public void updateBalanceDB(String userName, int balance) 
+	{
+		try {
+			pStatement = conn.prepareStatement("update users set currency=? where userName=?");
+			pStatement.setInt(1, balance);
+			pStatement.setString(2, userName);
+			pStatement.executeUpdate();
 
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		}
+	}
+	
 	public boolean isGoToGame() {
 		return goToGame;
 	}
