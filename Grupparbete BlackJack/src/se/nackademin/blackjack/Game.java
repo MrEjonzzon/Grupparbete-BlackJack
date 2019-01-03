@@ -14,7 +14,7 @@ public class Game {
 	boolean loggedIn = false;
 	boolean gameOn = true;
 	Scanner scanner = new Scanner(System.in);
-	Database database = new Database();	
+	Database database = new Database();
 	Deck deck = new Deck();
 
 	System.out.println("Welcome to BlackJack");
@@ -26,17 +26,17 @@ public class Game {
 
 	try {
 	    int select = Integer.parseInt(selection);
-
 	    switch (select) {
 	    case 1:
-
 		database.login();
 		loggedIn = true;
 		break;
 
 	    case 2:
 		database.register();
-		database.login();
+		if (database.isGoToGame() == true) {
+		    loggedIn = true;
+		}
 		break;
 
 	    default:
@@ -50,9 +50,7 @@ public class Game {
 
 	while (loggedIn) {
 	    Player player = new Player(database.getUserName(), database.getBalance());
-	    
-	    
-	    
+
 	    while (gameOn) {
 		// player.draw(2)
 		// dealer.draw(2)
