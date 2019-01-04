@@ -5,10 +5,12 @@ import java.util.List;
 
 public abstract class BlackJackPlayer {
     private final String name;
+    private int balance;
     private final List<Card> currentHand;
 
-    public BlackJackPlayer(String name) {
+    public BlackJackPlayer(String name, int balance) {
         this.name = name;
+        this.balance = balance;
         currentHand = new ArrayList<>();
     }
 
@@ -53,4 +55,14 @@ public abstract class BlackJackPlayer {
         }
         return hand;
     }
+
+    public int getBalance() {
+        return balance;
+    }
+
+    public void setBalance(int balance) {
+        this.balance = balance;
+    }
+    
+    
 }
