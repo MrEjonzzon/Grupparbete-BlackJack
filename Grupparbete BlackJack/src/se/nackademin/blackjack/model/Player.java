@@ -5,16 +5,13 @@ import se.nackademin.blackjack.db.Database;
 public class Player {
     private String name;
     private int balance, handValue;
-    Database database = new Database();
+
     int dealerHandValue = 0; // temporary
     int playerHandValue = 1; // temporary
 
     public Player(String name, int balance) {
-	setName(name);
-	setBalance(balance);
-	// String Hand[];
-	// setHandValue(0);
-
+	this.name = name;
+	this.balance = balance;
     }
 
     public String getName() {
@@ -48,15 +45,17 @@ public class Player {
     }
 
     void bust(int betAmount) {
-	database.setBalance(database.getBalance() - betAmount);
+	int bustAmmount = balance - betAmount;
+	System.out.println(bustAmmount);
     }
 
-    void win(int betAmount) {
-	database.setBalance(database.getBalance() + betAmount);
+    public void win(int betAmount) {
+	int winAmmount = balance + betAmount;
+	System.out.println(winAmmount);
     }
 
-    public void playRound(int betAmount) {
-	if (betAmount <= database.getBalance()) {
+    public void playRound(int betAmount, int playerHandValue, int dealerHandValue) {
+	if (betAmount <= balance) {
 	    if (playerHandValue < dealerHandValue) {
 		bust(betAmount);
 	    } else if (playerHandValue > dealerHandValue) {
