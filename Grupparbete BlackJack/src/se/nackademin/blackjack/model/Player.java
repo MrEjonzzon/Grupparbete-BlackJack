@@ -7,7 +7,6 @@ public class Player {
     public Player(String name, int balance) {
         setName(name);
         setBalance(balance);
-        String Hand[];
         setHandValue(0);
     }
 
@@ -33,14 +32,6 @@ public class Player {
 
     public void setHandValue(int handValue) {
         this.handValue = handValue;
-    }
-
-    public void drawCard(int cardAmount) {
-        //deck.draw
-        //add to player.hand
-        //handValue += newcard
-
-
     }
 
     public int bet(int betAmount) {
