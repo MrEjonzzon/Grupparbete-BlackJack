@@ -2,8 +2,9 @@ package se.nackademin.blackjack.model;
 
 public class Gambler extends BlackJackPlayer {
 
-    public Gambler(String name) {
-        super(name);
+    public Gambler(String name, int balance) {
+        super(name, balance);
+        
     }
 
     @Override
