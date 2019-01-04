@@ -30,9 +30,22 @@ public class Card{
 		this.value = value;
 	}
 
+	private char getSuiteChar() {
+		if (suit.equals("Clubs")) {
+			return '\u2663';
+		} else if (suit.equals("Diamonds")) {
+			return '\u2666';
+		} else if (suit.equals("Hearts")) {
+			return '\u2665';
+		} else if (suit.equals("Spades")) {
+			return '\u2660';
+		}
+		return ' ';
+	}
+
 	@Override
 	public String toString() {
-		return rank + "of  "+ suit + ",   Value = "+ value +"\n";
+		return rank + " of " + getSuiteChar();
 	}
 }
 
