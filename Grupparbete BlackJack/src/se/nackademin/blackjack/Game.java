@@ -1,22 +1,20 @@
 package se.nackademin.blackjack;
 
-import java.util.List;
 import java.util.Scanner;
 import se.nackademin.blackjack.db.Database;
-import se.nackademin.blackjack.model.Card;
 import se.nackademin.blackjack.model.Deck;
 import se.nackademin.blackjack.model.Player;
-import se.nackademin.blackjack.service.Dealer;
+
 
 public class Game {
-
+    private Database database;
+    private Player player;
+    
     public static void main(String[] args) {
 	boolean loggedIn = false;
 	boolean gameOn = true;
 	Scanner scanner = new Scanner(System.in);
 
-	Database database = new Database();
-	Deck deck = new Deck();
 
 	System.out.println("Welcome to BlackJack");
 	System.out.println("[1] Login");
