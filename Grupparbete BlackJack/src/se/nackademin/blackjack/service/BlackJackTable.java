@@ -1,6 +1,5 @@
 package se.nackademin.blackjack.service;
 
-import se.nackademin.blackjack.db.Database;
 import se.nackademin.blackjack.model.Deck;
 import se.nackademin.blackjack.model.Gambler;
 
@@ -117,7 +116,7 @@ public class BlackJackTable {
     public void updateBalance(int bet, Gambler gambler) {
 	if (gamblerWon == true) {
 	    gambler.setBalance(gambler.getBalance() + bet);
-	} else if (gamblerWon == false) {
+	} else {
 	    gambler.setBalance(gambler.getBalance() - bet);
 	}
     }
