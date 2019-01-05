@@ -15,7 +15,7 @@ public class Dealer extends BlackJackPlayer {
 	private final int [] value = { 11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10 };
 
 	public Dealer() {
-		super("Dealer");
+		super("Dealer", 0);
 	}
 
 	/**
