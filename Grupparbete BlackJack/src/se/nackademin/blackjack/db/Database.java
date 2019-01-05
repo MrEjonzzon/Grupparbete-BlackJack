@@ -34,7 +34,7 @@ public class Database {
 		
 		try 
 		{
-			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/blackjack?" + "user=AdminBlackJack&password=BlackJack18");
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/blackjack?" + "user=root&password=");
 		}
 		catch (SQLException e) 
 		{
@@ -77,7 +77,7 @@ public class Database {
 				pStatement.setString(2, password);
 				pStatement.setInt(3, defaultC);
 				pStatement.executeUpdate();
-				System.out.println("Account with username " + getUserName() + " has succesfully been created. Current amount is " + defaultC);
+				System.out.println("Account with username " + getUserName() + " has succesfully been created. Current balance is " + defaultC);
 				login();
 			}
 			else 
@@ -131,7 +131,7 @@ public class Database {
 			
 			if(valid) 
 			{
-				System.out.println("Succefully logged in as " + userName + "\nYour currency is " + getBalance());
+				System.out.println("Succefully logged in as " + userName + "\nYour balance is " + getBalance());
 				setUserName(userName);
 				setGoToGame(true);
 			}
