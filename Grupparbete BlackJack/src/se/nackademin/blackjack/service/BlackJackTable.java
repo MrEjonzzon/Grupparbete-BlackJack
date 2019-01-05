@@ -23,6 +23,7 @@ public class BlackJackTable {
 
     public boolean canBeginNewRound() {
 	return deck.getCards().size() > 4;
+	
     }
 
     public void startRound(Gambler gambler) {
