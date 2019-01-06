@@ -9,9 +9,6 @@ import java.sql.Statement;
 import java.util.Scanner;
 
 public class Database {
-	
-	Scanner input = new Scanner(System.in);
-	
 	boolean goToGame;
 	private String userName;
 	private int balance;
@@ -19,36 +16,25 @@ public class Database {
 	private Statement statement = null;
 	private PreparedStatement pStatement = null;
 	private ResultSet result = null;
+	private final Scanner scanner;
 	
-	public Database()
-	{
-		try 
-		{
+	public Database(Scanner scanner) {
+		this.scanner = scanner;
+		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
-		}
-		catch (ClassNotFoundException e) 
-		{
-			e.printStackTrace();
-		}
-		
-		try 
-		{
-			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/blackjack1?" + "user=Sonny&password=CykelstyrE1988");
-		}
-		catch (SQLException e) 
-		{
+			conn = DriverManager.getConnection("jdbc:mysql://18.202.69.163:3306/amiralidb?" + "user=amirali&password=password");
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 	
-	public void register() 
-	{
+	public void register() {
 		System.out.println("\n--------REGISTER--------\n");
 		System.out.print("Enter username: ");
-		String userName = input.next();
+		String userName = scanner.next();
 		setUserName(userName);
 		System.out.print("Enter password: ");
-		String password = input.next();
+		String password = scanner.next();
 		boolean valid = true;
 		int defaultC = 500; // The value the user will get for creating an account to the database. 
 		try
@@ -68,7 +54,6 @@ public class Database {
 					valid = false;
 				}
 			}
-			
 			if (valid) 
 			{
 				pStatement = conn.prepareStatement("insert into users value(default, ?, ?, ?)");
@@ -95,9 +80,9 @@ public class Database {
 	{
 		System.out.println("\n--------LOGIN-----------\n");
 		System.out.print("Enter username: ");
-		String userName = input.next();
+		String userName = scanner.next();
 		System.out.print("Enter password: ");
-		String password = input.next();
+		String password = scanner.next();
 		
 		boolean valid = true;
 		
@@ -153,8 +138,9 @@ public class Database {
 			pStatement.setInt(1, balance);
 			pStatement.setString(2, getUserName());
 			pStatement.executeUpdate();
+			this.balance = balance;
 		} catch (Exception e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		}
 	}
 
