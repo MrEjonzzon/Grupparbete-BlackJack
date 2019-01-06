@@ -71,23 +71,22 @@ public class BlackJack {
 			while (gameSwitch && gambler.getBalance() > 0) {
 			    System.out.println("How much would you like to bet?");
 			    int bet = scanner.nextInt();
-			    if(bet >= gambler.getBalance()) {
+			    if (bet >= 0) {
 
-				    table.startRound(gambler);
-				    table.showHands(gambler);
-				    table.play(gambler);
-				    table.finishRound(gambler);
-				    table.updateBalance(bet, gambler);
-				    gameSwitch = false;
-			    }
-			    else {
+				table.startRound(gambler);
+				table.showHands(gambler);
+				table.play(gambler);
+				table.finishRound(gambler);
+				table.updateBalance(bet, gambler);
+				gameSwitch = false;
+			    } else {
 				System.out.println("Your balance is lower than bet");
 			    }
 			}
 		    case 2:
 			System.out.println("Your balance is:" + gambler.getBalance());
 			break;
-			
+
 		    case 3:
 			System.out.println("How much do you want to deposit? ");
 			int deposit = scanner.nextInt();
