@@ -49,7 +49,7 @@ public class Database {
 		setUserName(userName);
 		System.out.print("Enter password: ");
 		String password = input.next();
-		boolean notValid = true;
+		boolean valid = true;
 		int defaultC = 500; // The value the user will get for creating an account to the database. 
 		try
 		{
@@ -60,16 +60,16 @@ public class Database {
 			{
 				if (result.getString("userName").equals(userName)) 
 				{
-					notValid = true;
+					valid = true;
 					break;
 				}
 				else 
 				{
-					notValid = false;
+					valid = false;
 				}
 			}
 			
-			if (notValid == false) 
+			if (valid) 
 			{
 				pStatement = conn.prepareStatement("insert into users value(default, ?, ?, ?)");
 				pStatement.setString(1, userName);
