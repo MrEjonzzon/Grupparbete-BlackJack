@@ -66,7 +66,7 @@ public class BlackJack {
 					case 3:
 						System.out.println("How much do you want to deposit? ");
 						int deposit = scanner.nextInt();
-						gambler.setBalance(gambler.getBalance() + deposit);
+						database.setBalance(gambler.getBalance() + deposit);
 						break;
 					case 4:
 						loggedIn = false;
