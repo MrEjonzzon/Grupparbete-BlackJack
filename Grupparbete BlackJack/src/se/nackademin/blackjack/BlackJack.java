@@ -61,28 +61,39 @@ public class BlackJack {
 	    }
 	    while (loggedIn) {
 		Gambler gambler = new Gambler(database.getUserName(), database.getBalance());
-		System.out.print("[1] Play\n[2] Check Balance\n[3] Logout ");
+		System.out.print("[1] Play\n[2] Check Balance\n[3] Deposit \n[4] Logout ");
 		String startMenu = scanner.next();
 		boolean gameSwitch = table.canBeginNewRound();
 		try {
 		    int userChoice = Integer.parseInt(startMenu);
 		    switch (userChoice) {
 		    case 1:
-			while (gameSwitch) {
+			while (gameSwitch && gambler.getBalance() > 0) {
 			    System.out.println("How much would you like to bet?");
 			    int bet = scanner.nextInt();
+			    if(bet >= gambler.getBalance()) {
 
-			    table.startRound(gambler);
-			    table.showHands(gambler);
-			    table.play(gambler);
-			    table.finishRound(gambler);
-			    table.updateBalance(bet, gambler);
-			    gameSwitch = false;
+				    table.startRound(gambler);
+				    table.showHands(gambler);
+				    table.play(gambler);
+				    table.finishRound(gambler);
+				    table.updateBalance(bet, gambler);
+				    gameSwitch = false;
+			    }
+			    else {
+				System.out.println("Your balance is lower than bet");
+			    }
 			}
 		    case 2:
 			System.out.println("Your balance is:" + gambler.getBalance());
 			break;
+			
 		    case 3:
+			System.out.println("How much do you want to deposit? ");
+			int deposit = scanner.nextInt();
+			gambler.setBalance(gambler.getBalance() + deposit);
+			break;
+		    case 4:
 			loggedIn = false;
 
 		    default:
@@ -90,7 +101,7 @@ public class BlackJack {
 
 		    }
 		} catch (Exception e) {
-		    System.out.println("Enter only numbers");
+		    System.out.println("Invalid Selection");
 		}
 
 	    }
