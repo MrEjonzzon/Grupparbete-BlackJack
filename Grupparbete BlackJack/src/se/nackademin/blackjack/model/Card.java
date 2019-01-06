@@ -30,17 +30,22 @@ public class Card{
 		this.value = value;
 	}
 
-	private char getSuiteChar() {
+	private String getSuiteChar() {
+		String symb = "";
 		if (suit.equals("Clubs")) {
-			return '\u2663';
+			symb = "Clubs";
+			return symb;
 		} else if (suit.equals("Diamonds")) {
-			return '\u2666';
+			symb = "Diamonds";
+			return symb;
 		} else if (suit.equals("Hearts")) {
-			return '\u2665';
+			symb = "Hearts";
+			return symb;
 		} else if (suit.equals("Spades")) {
-			return '\u2660';
+			symb = "Spades";
+			return symb;
 		}
-		return ' ';
+		return symb;
 	}
 
 	@Override
