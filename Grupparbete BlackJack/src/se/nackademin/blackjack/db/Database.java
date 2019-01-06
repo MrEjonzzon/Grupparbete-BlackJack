@@ -9,6 +9,9 @@ import java.sql.Statement;
 import java.util.Scanner;
 
 public class Database {
+	
+	Scanner input = new Scanner(System.in);
+	
 	boolean goToGame;
 	private String userName;
 	private int balance;
@@ -16,25 +19,36 @@ public class Database {
 	private Statement statement = null;
 	private PreparedStatement pStatement = null;
 	private ResultSet result = null;
-	private final Scanner scanner;
 	
-	public Database(Scanner scanner) {
-		this.scanner = scanner;
-		try {
+	public Database()
+	{
+		try 
+		{
 			Class.forName("com.mysql.cj.jdbc.Driver");
+		}
+		catch (ClassNotFoundException e) 
+		{
+			e.printStackTrace();
+		}
+		
+		try 
+		{
 			conn = DriverManager.getConnection("jdbc:mysql://18.202.69.163:3306/amiralidb?" + "user=amirali&password=password");
-		} catch (Exception e) {
+		}
+		catch (SQLException e) 
+		{
 			e.printStackTrace();
 		}
 	}
 	
-	public void register() {
+	public void register() 
+	{
 		System.out.println("\n--------REGISTER--------\n");
 		System.out.print("Enter username: ");
-		String userName = scanner.next();
+		String userName = input.next();
 		setUserName(userName);
 		System.out.print("Enter password: ");
-		String password = scanner.next();
+		String password = input.next();
 		boolean valid = true;
 		int defaultC = 500; // The value the user will get for creating an account to the database. 
 		try
@@ -46,14 +60,16 @@ public class Database {
 			{
 				if (result.getString("userName").equals(userName)) 
 				{
-					valid = true;
+					valid = false;
+					result.close();
 					break;
 				}
 				else 
 				{
-					valid = false;
+					valid = true;
 				}
 			}
+			
 			if (valid) 
 			{
 				pStatement = conn.prepareStatement("insert into users value(default, ?, ?, ?)");
@@ -61,12 +77,14 @@ public class Database {
 				pStatement.setString(2, password);
 				pStatement.setInt(3, defaultC);
 				pStatement.executeUpdate();
+				pStatement.close();
 				System.out.println("Account with username " + getUserName() + " has succesfully been created. Current balance is " + defaultC);
+				
 			}
 			else 
 			{
 				System.out.println("(Username already taken, try again!)");
-				register();
+
 			}
 
 		} 
@@ -80,9 +98,9 @@ public class Database {
 	{
 		System.out.println("\n--------LOGIN-----------\n");
 		System.out.print("Enter username: ");
-		String userName = scanner.next();
+		String userName = input.next();
 		System.out.print("Enter password: ");
-		String password = scanner.next();
+		String password = input.next();
 		
 		boolean valid = true;
 		
@@ -123,6 +141,7 @@ public class Database {
 				System.out.println("Username or password is wrong! Try again");
 				login();
 			}
+			result.close();
 		} 
 		catch (SQLException e) 
 		{
@@ -138,9 +157,10 @@ public class Database {
 			pStatement.setInt(1, balance);
 			pStatement.setString(2, getUserName());
 			pStatement.executeUpdate();
-			this.balance = balance;
+			setBalance(balance);
+			pStatement.close();
 		} catch (Exception e) {
-			e.printStackTrace();
+			System.out.println("Error!" + e);
 		}
 	}
 
