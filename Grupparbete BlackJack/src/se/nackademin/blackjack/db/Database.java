@@ -15,7 +15,6 @@ public class Database {
 	boolean goToGame;
 	private String userName;
 	private int balance;
-	
 	private Connection conn = null;
 	private Statement statement = null;
 	private PreparedStatement pStatement = null;
@@ -78,7 +77,6 @@ public class Database {
 				pStatement.setInt(3, defaultC);
 				pStatement.executeUpdate();
 				System.out.println("Account with username " + getUserName() + " has succesfully been created. Current balance is " + defaultC);
-				login();
 			}
 			else 
 			{
